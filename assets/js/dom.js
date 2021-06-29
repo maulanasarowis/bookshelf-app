@@ -119,12 +119,15 @@ function undoBookToStillRead(bookElement) {
 }
 
 function removeBookFromCompleted(bookElement) {
-  const posisi_buku = findBookIndex(bookElement[ID_BUKU]);
-
-  books.splice(posisi_buku, 1);
-
-  bookElement.remove();
-  updateDataToStorage();
+  if (confirm("Apakah anda yakin untuk menghapus?")) {
+    const posisi_buku = findBookIndex(bookElement[ID_BUKU]);
+    books.splice(posisi_buku, 1);
+    bookElement.remove();
+    updateDataToStorage();
+    alert("Berhasil dihapus");
+  } else {
+    alert("Batal dihapus");
+  }
 }
 
 function createButtonContainer() {
